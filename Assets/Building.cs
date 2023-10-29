@@ -5,12 +5,6 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-
-public struct Location{
-    int x;
-    int y;
-}
-
 public string buildingType;
 
 public int buildTime;
