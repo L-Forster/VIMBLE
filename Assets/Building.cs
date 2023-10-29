@@ -1,14 +1,43 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
 
-[System.Serializable]
-public class Building : PlayableAsset
+public class Building : MonoBehaviour
 {
-    // Factory method that generates a playable based on this asset
-    public override Playable CreatePlayable(PlayableGraph graph, GameObject go)
+
+public string buildingType;
+
+public bool isPowered;
+
+public int powerRequired;
+
+public int buildTime;
+
+public int health;
+
+public int maxHp;
+
+void TakeDamage(int damage){
+    health =- damage;
+}
+
+void Repair(int heal){
+   health =+ heal;
+   if(health > maxHp) health = maxHp;
+}
+
+    // Start is called before the first frame update
+    void Start()
     {
-        return Playable.Create(graph);
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(health <= 0){
+            Destroy(this);
+        }
     }
 }
