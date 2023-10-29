@@ -4,16 +4,40 @@ using UnityEngine;
 
 public class Battery : Building
 {
-   
-    // Start is called before the first frame update
+    public int energy;
+    public int maxEnergy; 
+
     void Start()
     {
-        
+        energy = 0;
     }
 
-    // Update is called once per frame
+    void GenerateEnergy(int generatedEnergy) 
+    {
+        energy = energy + generatedEnergy; 
+        if (energy >= maxEnergy)
+        {
+            energy = maxEnergy;
+            Debug.Log("Battery is full"); 
+        }
+    }
+
+    bool UseEnergy(int usedEnergy)
+    {
+        if (energy >= usedEnergy)
+        {
+            energy = energy - usedEnergy;
+            return true;
+        }
+        else
+        {
+            Debug.Log("Not enough energy");
+            return false;
+        }
+    }
+
     void Update()
     {
-        
+
     }
 }
