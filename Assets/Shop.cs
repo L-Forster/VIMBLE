@@ -8,6 +8,7 @@ public class Shop : MonoBehaviour
     public Building generatorPrefab;
     public Building batteryPrefab;
     public Building factoryPrefab;
+    public Building[] buildingsInShop;
     
     public void BuyBuilding(string buildingType, int xBuyPosition, int yBuyPosition)
     {

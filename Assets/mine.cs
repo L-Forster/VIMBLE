@@ -30,8 +30,8 @@ public class Mine : Building
     // Update is called once per frame
     void Update()
     {
-        int energyFromBattery = Building.Battery.energy;
-        MineMetal(ref energyFromBattery);
+        //int energyFromBattery = Building.Battery.energy;
+       // MineMetal(ref energyFromBattery);
 
     }
 }
