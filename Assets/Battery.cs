@@ -7,16 +7,6 @@ public class Battery : Building
     public int energy;
     public int maxEnergy; 
 
-    void Start()
-    {
-        name = "Plant Juice Holder"; //random name and initial values
-        buildTime = 15;
-        health = maxHp;
-        maxHp = 1500;
-        isPowered = false;
-        energy = 0;
-    }
-
     void GenerateEnergy(int generatedEnergy) 
     {
         energy = energy + generatedEnergy; 
@@ -40,7 +30,16 @@ public class Battery : Building
             return false;
         }
     }
-
+    
+    void Start()
+    {
+        name = "Plant Juice Holder"; //random name and initial values
+        buildTime = 15;
+        health = maxHp;
+        maxHp = 1500;
+        isPowered = false;
+        energy = 0;
+    }
     void Update()
     {
 
