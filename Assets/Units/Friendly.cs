@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnitNamespace;
 
+
 public class Friendly : Unit
 {
 	
