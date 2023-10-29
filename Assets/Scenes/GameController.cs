@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     private bool playerWon; //has the player won?
     private int metal;
     private int money;
+    public int pollution;
     public int getMoney()
     {
         return money;
