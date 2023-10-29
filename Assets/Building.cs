@@ -6,12 +6,11 @@ using UnityEngine;
 public class Building : MonoBehaviour
 {
 
-public struct Location{
-    int x;
-    int y;
-}
-
 public string buildingType;
+
+public bool isPowered;
+
+public int powerRequired;
 
 public int buildTime;
 
@@ -20,11 +19,11 @@ public int health;
 public int maxHp;
 
 void TakeDamage(int damage){
-    health = health - damage;
+    health =- damage;
 }
 
 void Repair(int heal){
-   health = heal + health;
+   health =+ heal;
    if(health > maxHp) health = maxHp;
 }
 
