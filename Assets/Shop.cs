@@ -9,7 +9,7 @@ public class Shop : MonoBehaviour
     public Building batteryPrefab;
     public Building factoryPrefab;
     
-    void BuyBuilding(string buildingType, int xBuyPosition, int yBuyPosition)
+    public void BuyBuilding(string buildingType, int xBuyPosition, int yBuyPosition)
     {
         switch (buildingType)
         {
