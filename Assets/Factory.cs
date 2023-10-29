@@ -9,13 +9,7 @@ public class Factory : Building
     // Start is called before the first frame update
     void Start()
     {
-        buildingType= "Factory";
-        maxHp = 20;
-        buildTime = 10;
         health = maxHp;
-        isPowered = false;
-        powerRequired = 10;
-        unit = 0;
     }
     void CreateUnit(int energy, int resources, string type)
     {

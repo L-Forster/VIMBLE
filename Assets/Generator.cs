@@ -32,12 +32,7 @@ public class Generator : Building
     // Start is called before the first frame update
     void Start()
     {
-        buildingType = "NATURE EATING Generator"; //random name and initial values
-        genratedEnergy = 0;
-        buildTime = 25;
-        maxHp = 3100;
         health = maxHp;
-        powerRequired = int.MaxValue;
     }
 
     // Update is called once per frame

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3131674691976351392}
-  - component: {fileID: 5219263715815696958}
+  - component: {fileID: -8474996750975167265}
   m_Layer: 0
   m_Name: Battery
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5219263715815696958
+--- !u!114 &-8474996750975167265
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,10 +41,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6643643829433580684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1f81c29aae984d4d84d8db292c1d6e8, type: 3}
+  m_Script: {fileID: 11500000, guid: ba772fce227378afb8b513ee08ae70a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: Battery
-  buildTime: 0
+  isPowered: 0
+  powerRequired: 0
+  buildTime: 15
   health: 0
-  maxHp: 0
+  maxHp: 1500
+  energy: 0
+  maxEnergy: 0

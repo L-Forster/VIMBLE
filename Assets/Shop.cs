@@ -28,7 +28,7 @@ public class Shop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        BuyBuilding("Generator",3,4);
     }
 
     // Update is called once per frame
