@@ -18,8 +18,13 @@ public class CameraMovement : MonoBehaviour
     {
         // Store the current position of the camera
         Vector3 currentPosition = transform.position;
-
         // Check for input and update the camera's position
+        if(Input.GetKeyDown(KeyCode.LeftShift)){
+            cameraSpeed =  cameraSpeed*3;
+        }
+        if(Input.GetKeyUp(KeyCode.LeftShift)){
+            cameraSpeed = cameraSpeed/3;
+        }
         if (Input.GetKey(KeyCode.W))
         {
             currentPosition += Vector3.up * cameraSpeed * Time.deltaTime;
