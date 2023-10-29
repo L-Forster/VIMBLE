@@ -5,32 +5,67 @@ using UnitNamespace;
 
 public class Friendly : Unit
 {
+	
     // Start is called before the first frame update
-
-	void Move(value){
-		setPosistion(value)
+	private Vector2 position;
+	public void Move(Vector2 target_pos){
+		position.x = position.x + target_pos.x;
+		position.y = position.y + target_pos.y;
 	}
 
-	void Attack(target){
-		if (target.type == "placeable"){
-			pass;
+	bool selected
+	{
+		get {
+			return selected;
+	}
+    	set {
+			selected = value;
 		}
-		else if (target.type == "unit"){
-			pass;
+    }
+
+    Vector2 onMouseDown()
+    {
+        // Get the mouse position in screen space
+        Vector3 mousePos = Input.mousePosition;
+        // Convert the mouse position from screen space to world space
+        mousePos.z = -Camera.main.transform.position.z; // Set the z-coordinate to match the camera's position
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(mousePos);
+     
+        // if the target is on a unit, highlight them
+     
+        
+        return mousePosition;
+    }
+
+    void Select()
+    {
+		float difference = Vector2.Distance(onMouseDown(), position);
+		difference = Mathf.Abs(difference);
+        if (difference < 5){
+			selected = true;
 		}
+        // insert code to highlight the thing
+    }
+	void HighlightSelection(){
 		
+
 	}
 
     void Start()
     {
-        
+        selected = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+     if (selected)
+	{
+    	position = onMouseDown();
+		Move(position);
+	}
         
-    }
+}
 
 
 
