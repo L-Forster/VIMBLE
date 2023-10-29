@@ -5,18 +5,19 @@ using UnityEngine;
 
 public class resource : MonoBehaviour
 { 
-    resource()
+    public resource()
     {
     }
 
+}
+
+public class waterResource : resource
+{
 }
 public class Terrain : MonoBehaviour
 {
     public resource Resource;
     public bool foliage;
-    // Start is called before the first frame update
-
-    // Update is called once per frame
     void removeFoliage()
     {
         //remove foliage
@@ -26,7 +27,6 @@ public class Terrain : MonoBehaviour
 
 public class water : Terrain
 {
-    
 }
 public class flatlands : Terrain
 {
