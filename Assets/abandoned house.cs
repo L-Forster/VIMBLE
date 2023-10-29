@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class abandonedhouse : building
+public class Abandonedhouse : Building
 {
     public bool broke = false;
     int Timeremaining = 10;
@@ -17,9 +17,9 @@ public class abandonedhouse : building
     {
         if (broke && Timeremaining > 0)
         {
-            Timeremaining -= 1
+            Timeremaining -= 1;
         }else if (Timeremaining == 0 && broke){
-            destroy(this.building);
+            Destroy(this);
         }
     }
 }
