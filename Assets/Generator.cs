@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Generator : Building
@@ -9,14 +12,20 @@ public class Generator : Building
   
 
   void Generate(int resourcePower){
-    genratedEnergy = resourcePower; //generates higher power depending on the resource
+    genratedEnergy = resourcePower; //generates higher power depending on the resource oil wood etc
   }
 
-  void PowerAdjacent(int x,int y, Building[] buildings){  
+  void PowerAdjacent(Building[] buildings){  
    foreach (Building building in buildings)
    {
-    //run every time a building is added?
-      //power on depending on the x y coordinates (may need to change it to unitiy location)
+   float bX = building.transform.position.x;
+   float bY = building.transform.position.y;
+    if(Math.Abs(bX - this.transform.position.x) <= radius && Math.Abs(bY- this.transform.position.y) <= radius){
+            if(building.powerRequired < genratedEnergy){
+                genratedEnergy =- building.powerRequired;
+                building.isPowered = true;
+            }
+    }
    }  
   }
 
