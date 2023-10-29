@@ -5,7 +5,12 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
+
 public string buildingType;
+
+public bool isPowered;
+
+public int powerRequired;
 
 public int buildTime;
 

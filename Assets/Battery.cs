@@ -9,6 +9,11 @@ public class Battery : Building
 
     void Start()
     {
+        name = "Plant Juice Holder"; //random name and initial values
+        buildTime = 15;
+        health = maxHp;
+        maxHp = 1500;
+        isPowered = false;
         energy = 0;
     }
 
