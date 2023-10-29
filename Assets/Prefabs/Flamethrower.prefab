@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -4373433064347235553}
   m_Layer: 0
   m_Name: Flamethrower
-  m_TagString: Untagged
+  m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   speed: 10
-  damage: 20
+  damage: 5
+  damage_cooldown: 0.4
   alive: 1
   target: {fileID: 0}
   selected: 0

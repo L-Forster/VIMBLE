@@ -11,8 +11,8 @@ namespace UnitNamespace
         public int health;
         public int speed;
         public int damage;
-
-
+        private float lastDamageTime;
+        public float damage_cooldown;
         // Start is called before the first frame update
         public bool alive;
         public Unit target;
@@ -76,10 +76,34 @@ namespace UnitNamespace
                 target.health = (target.health - damage);
             }
         }
+
+        public void DoDamage(Tree target)
+        {
+            if ((target.health - damage) <= 0)
+            {
+                target.alive = false;
+                target.health = 0;
+            }
+
+            else
+            {
+                target.health = (target.health - damage);
+            }
+
+        }
         
+        public void DoDamage(Building target)
+        {
+            if (Time.time - lastDamageTime >= damage_cooldown)
+            {
+                target.health = (target.health - damage);
+                lastDamageTime = Time.time;
+            }
+        }
+
         void Start()
         {
-
+            lastDamageTime = 0.0f;
         }
 
         // Update is called once per frame
@@ -88,9 +112,9 @@ namespace UnitNamespace
             if (!alive)
             {
                 // RUN DEATH ANIMATION
-
+                
                 // REMOVE THE UNIT:
-                Destroy(gameObject);
+                Destroy(this);
             }
         }
     }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -218966626634587875}
   m_Layer: 0
   m_Name: Scout
-  m_TagString: Untagged
+  m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   health: 50
   speed: 20
   damage: 10
+  damage_cooldown: 2
   alive: 1
   target: {fileID: 0}
   selected: 0

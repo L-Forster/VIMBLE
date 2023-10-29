@@ -19,6 +19,24 @@ public class Friendly : Unit
         selected = false;
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+		isMoving = false;
+        // Check if the collision involves a GameObject you're interested in
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // Handle the collision with the "Enemy" GameObject
+			DoDamage(collision.gameObject.GetComponent<UnitNamespace.Unit>());
+            Debug.Log("Collided with an enemy!");
+           
+        }
+		else if (collision.gameObject.CompareTag("Tree"))
+		{
+			DoDamage(collision.gameObject.GetComponent<UnitNamespace.Unit>());
+			Debug.Log("Collided with a tree!");
+		}
+    }
+
     public void Move()
     {
         if (float.IsNaN(target_pos.x) || float.IsNaN(target_pos.y) || float.IsInfinity(target_pos.x) || float.IsInfinity(target_pos.y))
