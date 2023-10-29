@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,14 +15,18 @@ public string buildingType;
 
 public int buildTime;
 
-public int hp;
+public int health;
 
-public int[][] cost;
+public int maxHp;
 
-public Location location;
+void TakeDamage(int damage){
+    health = health - damage;
+}
 
-public Location[] buildSpace;
-
+void Repair(int heal){
+   health = heal + health;
+   if(health > maxHp) health = maxHp;
+}
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +37,8 @@ public Location[] buildSpace;
     // Update is called once per frame
     void Update()
     {
-        
+        if(health <= 0){
+            Destroy(this);
+        }
     }
 }
