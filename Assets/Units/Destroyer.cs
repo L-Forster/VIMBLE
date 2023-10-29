@@ -6,7 +6,7 @@ using UnitNamespace;
 
 public class Destroyer : Friendly
 {
-
+    
     void Start()
     {
 

@@ -7,6 +7,7 @@ public class Enemy : Unit
 {
     public Vector2 target_pos;
     private Vector2 position;
+    
 
     private void Start()
     {

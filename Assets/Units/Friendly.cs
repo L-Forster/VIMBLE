@@ -9,7 +9,9 @@ public class Friendly : Unit
     public Vector2 mousePos;
     public Vector2 target_pos;
     private Vector2 position;
-
+	public int tree_damage;
+	public int unit_damage;
+	public int metal_cost;
     private void Start()
     {
         target_pos = transform.position; // Initialize target_pos to the current position
