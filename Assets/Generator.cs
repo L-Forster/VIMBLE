@@ -21,7 +21,7 @@ public class Generator : Building
    float bX = building.transform.position.x;
    float bY = building.transform.position.y;
     if(Math.Abs(bX - this.transform.position.x) <= radius && Math.Abs(bY- this.transform.position.y) <= radius){
-            if(building.powerRequired < genratedEnergy){
+            if(building.powerRequired < genratedEnergy && !building.isPowered){
                 genratedEnergy =- building.powerRequired;
                 building.isPowered = true;
             }
@@ -35,8 +35,9 @@ public class Generator : Building
         buildingType = "NATURE EATING Generator"; //random name and initial values
         genratedEnergy = 0;
         buildTime = 25;
-        health = maxHp;
         maxHp = 3100;
+        health = maxHp;
+        powerRequired = int.MaxValue;
     }
 
     // Update is called once per frame
