@@ -8,15 +8,14 @@ namespace UnitNamespace
 
     public class Unit : MonoBehaviour, IUnit
     {
-        private int health;
-        private int speed;
-        private int damage;
+        public int health;
+        public int speed;
+        public int damage;
 
-        private Vector2 position;
 
         // Start is called before the first frame update
-        private bool alive;
-        private Unit target;
+        public bool alive;
+        public Unit target;
         
         int IUnit.health
             {
@@ -52,16 +51,7 @@ namespace UnitNamespace
                 damage = value;
             }
         }
-
-        Vector2 IUnit.position
-        {
-            get {
-                return position;
-            }
-            set {
-                position = value;
-            }
-        }
+        
 
         bool IUnit.alive
         {

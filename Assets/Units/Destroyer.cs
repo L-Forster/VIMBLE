@@ -6,19 +6,10 @@ using UnitNamespace;
 
 public class Destroyer : Friendly
 {
-    private bool alive;
-    private int health;
-    private int damage;
-    private int speed;
-    private Unit target;
-    private Vector2 position;
+
     void Start()
     {
-        alive = true;
-        health = 100;
-        damage = 10;
-        speed = 5;
-        target = null;
+
     }
 
 
