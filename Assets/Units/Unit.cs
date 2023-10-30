@@ -8,22 +8,22 @@ namespace UnitNamespace
 
     public class Unit : MonoBehaviour, IUnit
     {
-        private int health;
-        private int speed;
-        private int damage;
-
-        private Vector2 position;
-
+        public int health;
+        public int speed;
+        public int damage;
+        private float lastDamageTime;
+        public float damage_cooldown;
         // Start is called before the first frame update
-        private bool alive;
-        private Unit target;
+        public bool alive;
+        public GameObject target;
+        public bool isMoving;
         
         int IUnit.health
             {
                 get { return health; }
                 set { health = value; }
             }
-        Unit IUnit.target
+        GameObject IUnit.target
         {
             get {
                 return target;
@@ -52,16 +52,7 @@ namespace UnitNamespace
                 damage = value;
             }
         }
-
-        Vector2 IUnit.position
-        {
-            get {
-                return position;
-            }
-            set {
-                position = value;
-            }
-        }
+        
 
         bool IUnit.alive
         {
@@ -73,6 +64,9 @@ namespace UnitNamespace
             }
         }
 
+        public void DoDamage(GameObject target)
+        {
+        }
         public void DoDamage(Unit target)
         {
             if ((target.health - damage) <= 0)
@@ -86,10 +80,39 @@ namespace UnitNamespace
                 target.health = (target.health - damage);
             }
         }
+
+        public void DoDamage(Tree target)
+        {
+            if (Time.time - lastDamageTime >= damage_cooldown)
+            {
+                target.health = (target.health - damage);
+                lastDamageTime = Time.time;
+
+                if ((target.health - damage) <= 0)
+                {
+                    target.alive = false;
+                    target.health = 0;
+                }
+
+                else
+                {
+                    target.health = (target.health - damage);
+                }
+            }
+        }
         
+        public void DoDamage(Building target)
+        {
+            if (Time.time - lastDamageTime >= damage_cooldown)
+            {
+                target.health = (target.health - damage);
+                lastDamageTime = Time.time;
+            }
+        }
+
         void Start()
         {
-
+            lastDamageTime = 0.0f;
         }
 
         // Update is called once per frame
@@ -98,9 +121,9 @@ namespace UnitNamespace
             if (!alive)
             {
                 // RUN DEATH ANIMATION
-
+                
                 // REMOVE THE UNIT:
-                Destroy(gameObject);
+                Destroy(this);
             }
         }
     }
