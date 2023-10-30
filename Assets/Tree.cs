@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class uiController : MonoBehaviour
+public class Tree : MonoBehaviour
 {
     // Start is called before the first frame update
+    public int health;
+    public bool alive;
     void Start()
     {
         
@@ -13,6 +15,10 @@ public class uiController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!alive)
+        {
+            gameObject.SetActive(false);
+            Destroy(this);
+        }
     }
 }
