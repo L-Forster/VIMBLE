@@ -2,22 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Tilemaps;
 public class Tree : MonoBehaviour
 {
-    // Start is called before the first frame update
     public int health;
-    public bool alive;
+    public Tilemap Tilemap;
+
+    public List<TileBase> tiles;
+    // Start is called before the first frame update
     void Start()
     {
-        
+        if (tiles.Contains(Tilemap.GetTile(Vector3Int.FloorToInt(this.transform.localPosition))))
+        {
+            Destroy(this);
+        }
+
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (!alive)
+        if (health <= 0)
         {
-            gameObject.SetActive(false);
+
             Destroy(this);
         }
     }
