@@ -17,11 +17,7 @@ namespace UnitNamespace
         public GameObject target;
         public bool isMoving;
 
-        int IUnit.health
-        {
-            get { return health; }
-            set { health = value; }
-        }
+
 
         int IUnit.speed
         {

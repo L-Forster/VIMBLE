@@ -6,7 +6,6 @@ namespace IUnitNamespace{
     public interface IUnit
     {
         //att
-        int health { get; set; }
         int speed { get; set; }
         int damage { get; set; }
         bool alive { get; set; }

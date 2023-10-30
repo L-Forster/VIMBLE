@@ -15,7 +15,9 @@ public class Friendly : Unit
 	public int metal_cost;
 	private bool isAttacking;
     public TextMesh health_text;
-
+	
+	public GameObject Marker;
+    public Sprite spriteToInstantiate; // Reference to the sprite you want to add
     private void Start()
     {
         health_text = GetComponentInChildren<TextMesh>(); // Assuming the Text component is a child of the unit's GameObject		isMoving = false;
@@ -116,8 +118,16 @@ public class Friendly : Unit
             if (Input.GetMouseButtonDown(1))
             {
                 target_pos = mousePosition;
-				
-                Move();
+			GameObject newSprite = Instantiate(Marker, target_pos, Quaternion.identity);
+
+// Assign the sprite to the SpriteRenderer
+			SpriteRenderer spriteRenderer = newSprite.GetComponent<SpriteRenderer>();
+			spriteRenderer.sprite = Resources.Load<Sprite>("Marker"); // Replace "yourSprite" with the sprite you want to assign
+
+// Set the position of the new GameObject
+			newSprite.transform.position = target_pos;
+			Move();
+
                 //Debug.Log("Moving");
             }
         }
@@ -135,7 +145,7 @@ public class Friendly : Unit
         {	
 			selected = !selected;
             
-            Transform triangleChild = transform.Find("Triangle");
+            Transform triangleChild = transform.Find("Destroyer");
 
             if (triangleChild != null)
             {
@@ -163,7 +173,7 @@ public class Friendly : Unit
 
 	private void Update()
 	{
-        health_text.text = health.ToString() ;
+        health_text.text = health.ToString();
 		if(health<=0){gameObject.SetActive(false);Destroy(this);}
     	if (selected)
     	{
