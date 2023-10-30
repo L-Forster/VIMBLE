@@ -7,7 +7,7 @@ public class CameraMovement : MonoBehaviour
     private Vector3 cameraPosition;
     
     [Header("Camera Settings")]
-    public float cameraSpeed = 5.0f; // Adjust the speed in the Inspector.
+    public float cameraSpeed = 10.0f; // Adjust the speed in the Inspector.
 
     void Start()
     {
