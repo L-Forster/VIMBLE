@@ -10,7 +10,7 @@ public class Destroyer : Friendly
     private int health;
     private int damage;
     private int speed;
-    private Unit target;
+    private GameObject target;
     private Vector2 position;
     void Start()
     {

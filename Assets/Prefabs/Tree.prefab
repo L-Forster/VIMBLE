@@ -95,9 +95,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7066443534188607415}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0296611caa61fef4f80dd11daf468a48, type: 3}
+  m_Script: {fileID: 11500000, guid: bedb9976639a5354f8d1fd0e186a9bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingType: 
+  isPowered: 0
+  powerRequired: 0
+  buildTime: 0
+  health: 0
+  maxHp: 0
 --- !u!61 &-4779559921453699753
 BoxCollider2D:
   m_ObjectHideFlags: 0

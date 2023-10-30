@@ -41,14 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3323654258719225154}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ddb674109af40efe9d7450ddb2bf4b9, type: 3}
+  m_Script: {fileID: 11500000, guid: bedb9976639a5354f8d1fd0e186a9bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingType: Generator
+  buildingType: 
   isPowered: 0
   powerRequired: 0
-  buildTime: 25
+  buildTime: 0
   health: 0
-  maxHp: 3100
-  genratedEnergy: 0
-  radius: 20
+  maxHp: 0
