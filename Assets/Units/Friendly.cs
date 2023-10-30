@@ -116,6 +116,7 @@ public class Friendly : Unit
             if (Input.GetMouseButtonDown(1))
             {
                 target_pos = mousePosition;
+				
                 Move();
                 //Debug.Log("Moving");
             }
