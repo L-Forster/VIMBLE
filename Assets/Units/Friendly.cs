@@ -118,15 +118,15 @@ public class Friendly : Unit
             if (Input.GetMouseButtonDown(1))
             {
                 target_pos = mousePosition;
-			GameObject newSprite = Instantiate(Marker, target_pos, Quaternion.identity);
+				GameObject newSprite = Instantiate(Marker, target_pos, Quaternion.identity);
 
 // Assign the sprite to the SpriteRenderer
-			SpriteRenderer spriteRenderer = newSprite.GetComponent<SpriteRenderer>();
-			spriteRenderer.sprite = Resources.Load<Sprite>("Marker"); // Replace "yourSprite" with the sprite you want to assign
+				SpriteRenderer spriteRenderer = newSprite.GetComponent<SpriteRenderer>();
+				spriteRenderer.sprite = Sprite.Create(Resources.Load<Texture2D>("thumbnail_Selector.png"), new Rect(0, 0, 100,100),new Vector2(0.5f, 0.5f), 100f); // Replace "yourSprite" with the sprite you want to assign
 
 // Set the position of the new GameObject
-			newSprite.transform.position = target_pos;
-			Move();
+				newSprite.transform.position = target_pos;
+				Move();
 
                 //Debug.Log("Moving");
             }
