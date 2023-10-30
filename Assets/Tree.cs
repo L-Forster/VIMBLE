@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Abandonedhouse : Building
+public class Tree : MonoBehaviour
 {
-    public bool broke = false;
-    int Timeremaining = 10;
     // Start is called before the first frame update
+    public int health;
+    public bool alive;
     void Start()
     {
         
@@ -15,12 +15,9 @@ public class Abandonedhouse : Building
     // Update is called once per frame
     void Update()
     {
-        if (broke && Timeremaining > 0)
+        if (!alive)
         {
-            Timeremaining -= 1;
-        }
-        else if (Timeremaining == 0 && broke)
-        {
+            gameObject.SetActive(false);
             Destroy(this);
         }
     }
