@@ -15,14 +15,14 @@ namespace UnitNamespace
         public float damage_cooldown;
         // Start is called before the first frame update
         public bool alive;
-        public Unit target;
+        public GameObject target;
         
         int IUnit.health
             {
                 get { return health; }
                 set { health = value; }
             }
-        Unit IUnit.target
+        GameObject IUnit.target
         {
             get {
                 return target;
@@ -63,6 +63,9 @@ namespace UnitNamespace
             }
         }
 
+        public void DoDamage(GameObject target)
+        {
+        }
         public void DoDamage(Unit target)
         {
             if ((target.health - damage) <= 0)
@@ -79,17 +82,22 @@ namespace UnitNamespace
 
         public void DoDamage(Tree target)
         {
-            if ((target.health - damage) <= 0)
-            {
-                target.alive = false;
-                target.health = 0;
-            }
-
-            else
+            if (Time.time - lastDamageTime >= damage_cooldown)
             {
                 target.health = (target.health - damage);
-            }
+                lastDamageTime = Time.time;
 
+                if ((target.health - damage) <= 0)
+                {
+                    target.alive = false;
+                    target.health = 0;
+                }
+
+                else
+                {
+                    target.health = (target.health - damage);
+                }
+            }
         }
         
         public void DoDamage(Building target)

@@ -22,6 +22,18 @@ public class Enemy : Unit
 		// finds the cloest building / friendly and attacks them
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+	    // Check if the collision involves a GameObject you're interested in
+	    if (collision.gameObject.CompareTag("Friendly"))
+	    {
+		    // Handle the collision with the "Enemy" GameObject
+		    DoDamage(collision.gameObject.GetComponent<UnitNamespace.Unit>());
+		    Debug.Log("Collided with a Friendly!");
+		    isMoving = false;
+	    }
+    }
+
     public void Move()
     {
         if (float.IsNaN(target_pos.x) || float.IsNaN(target_pos.y) || float.IsInfinity(target_pos.x) || float.IsInfinity(target_pos.y))
@@ -46,22 +58,23 @@ public class Enemy : Unit
 	private void Update()
 	{
         // Move towards the target
-        	if (isMoving)
-        	{
-            	Move();
+        if(health<=0){gameObject.SetActive(false);Destroy(this);}
+
+		if (isMoving)
+        {
+         	Move();
 
             // Check if the distance to the target is below a small threshold
-            	float distanceToTarget = Vector2.Distance((Vector2)transform.position, target_pos);
-            	if (distanceToTarget < 0.1f)
-            	{
-                // Stop moving when close enough to the target
-                	isMoving = false;
-                	Debug.Log("Reached the target");
-	                //DoDamage();
-
+           	float distanceToTarget = Vector2.Distance((Vector2)transform.position, target_pos);
+           	if (distanceToTarget < 0.1f)
+           	{
+               // Stop moving when close enough to the target
+               	isMoving = false;
+               	Debug.Log("Reached the target");
+	               //DoDamage();
             	}
-        	}
-    	}
+       	}
+   	}
 	
 }
 

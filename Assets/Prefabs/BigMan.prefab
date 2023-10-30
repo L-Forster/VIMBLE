@@ -65,7 +65,7 @@ MonoBehaviour:
   speed: 5
   damage: 100
   damage_cooldown: 5
-  alive: 0
+  alive: 1
   target: {fileID: 0}
   selected: 0
   mousePos: {x: 0, y: 0}

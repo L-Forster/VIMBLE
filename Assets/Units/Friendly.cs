@@ -12,6 +12,7 @@ public class Friendly : Unit
 	public int tree_damage;
 	public int unit_damage;
 	public int metal_cost;
+	private bool isAttacking;
     private void Start()
     {
         target_pos = transform.position; // Initialize target_pos to the current position
@@ -22,20 +23,54 @@ public class Friendly : Unit
     void OnCollisionEnter2D(Collision2D collision)
     {
 		isMoving = false;
+        Debug.Log("Collided!!!");
+            // Set the target to the collided object
+            target = collision.gameObject;
+
+            // Start attacking if not already attacking
+            if (!isAttacking)
+            {
+                StartCoroutine(AttackCoroutine());
+            }
         // Check if the collision involves a GameObject you're interested in
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            // Handle the collision with the "Enemy" GameObject
-			DoDamage(collision.gameObject.GetComponent<UnitNamespace.Unit>());
-            Debug.Log("Collided with an enemy!");
-           
-        }
-		else if (collision.gameObject.CompareTag("Tree"))
-		{
-			DoDamage(collision.gameObject.GetComponent<UnitNamespace.Unit>());
-			Debug.Log("Collided with a tree!");
-		}
+
     }
+
+    private IEnumerator AttackCoroutine()
+    {
+        isAttacking = true;
+
+        while (target != null && !isMoving)
+        {
+            // Perform the attack here (you can call DoDamage or any other attack logic)
+			if (target != null)
+			{
+    			if (target.CompareTag("Enemy"))
+    			{
+        			UnitNamespace.Unit unitComponent = target.GetComponent<UnitNamespace.Unit>();
+        			if (unitComponent != null && unitComponent.alive)
+        			{
+            			DoDamage(unitComponent);
+        			}
+    			}
+    			else if (target.CompareTag("Tree"))
+    		{
+        	Tree treeComponent = target.GetComponent<Tree>();
+        	if (treeComponent != null && treeComponent.alive)
+        	{
+            	DoDamage(treeComponent);
+        	}
+    	}
+	}
+
+            // Wait for the cooldown period before the next attack
+		
+            yield return new WaitForSeconds(damage_cooldown);
+        }
+
+        // Reset the attack state after the target is defeated
+        isAttacking = false;
+	}
 
     public void Move()
     {
@@ -55,7 +90,11 @@ public class Friendly : Unit
 
         Vector2 newPosition = (Vector2)transform.position + tempPos * speed * Time.deltaTime;
         transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
+    	position = newPosition;
     }
+
+
+
 
     private void OnMouseDown()
     {
@@ -115,6 +154,7 @@ private bool isMoving = false;
 
 	private void Update()
 	{
+		if(health<=0){gameObject.SetActive(false);Destroy(this);}
     	if (selected)
     	{
         // Right-click to set a new target position

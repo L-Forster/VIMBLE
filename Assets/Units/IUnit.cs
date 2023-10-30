@@ -11,10 +11,10 @@ namespace IUnitNamespace{
         int damage { get; set; }
         bool alive { get; set; }
 
-        Unit target { get; set; }
+        GameObject target { get; set; }
 
         //methods
-        void DoDamage(Unit target);
+        void DoDamage(GameObject target);
 
     }
 }

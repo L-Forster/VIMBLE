@@ -17,6 +17,7 @@ public class Tree : MonoBehaviour
     {
         if (!alive)
         {
+            gameObject.SetActive(false);
             Destroy(this);
         }
     }

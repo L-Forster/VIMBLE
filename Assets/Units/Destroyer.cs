@@ -20,9 +20,6 @@ public class Destroyer : Friendly
         // if the unit is selected
 
         // if the unit has a target
-        if (target != null)
-        {
-            DoDamage(target);
-        }
+
     }
 }
