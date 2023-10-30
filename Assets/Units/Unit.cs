@@ -16,20 +16,11 @@ namespace UnitNamespace
         public bool alive;
         public GameObject target;
         public bool isMoving;
-        
+
         int IUnit.health
-            {
-                get { return health; }
-                set { health = value; }
-            }
-        GameObject IUnit.target
         {
-            get {
-                return target;
-            }
-            set {
-                target = value;
-            }
+            get { return health; }
+            set { health = value; }
         }
 
         int IUnit.speed
