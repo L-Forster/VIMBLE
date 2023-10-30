@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnitNamespace;
 using System.Linq;
+using UnityEngine.UI;
+
 public class Enemy : Unit
 {
     public Vector2 target_pos;
     private Vector2 position;
     private bool isAttacking;
+    public TextMesh health_text;
 
 
     private void Start()
     {
+	    health_text = GetComponentInChildren<TextMesh>(); // Assuming the Text component is a child of the unit's GameObject		isMoving = false;
+
+
 	    isMoving = false;
         target_pos = transform.position; // Initialize target_pos to the current position
         position = transform.position; // Initialize position to the current position
@@ -152,7 +158,8 @@ public class Enemy : Unit
 
 	private void Update()
 	{
-        // Move towards the target
+		health_text.text = health.ToString() ;
+
         if(health<=0){gameObject.SetActive(false);Destroy(this);}
 
         if (!isMoving)

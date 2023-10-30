@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnitNamespace;
+using UnityEngine.UI;
 
 public class Friendly : Unit
 {
@@ -13,10 +14,11 @@ public class Friendly : Unit
 	public int unit_damage;
 	public int metal_cost;
 	private bool isAttacking;
+    public TextMesh health_text;
 
     private void Start()
     {
-		isMoving = false;
+        health_text = GetComponentInChildren<TextMesh>(); // Assuming the Text component is a child of the unit's GameObject		isMoving = false;
 		target = null;
         target_pos = transform.position; // Initialize target_pos to the current position
         position = transform.position; // Initialize position to the current position
@@ -160,6 +162,7 @@ public class Friendly : Unit
 
 	private void Update()
 	{
+        health_text.text = health.ToString() ;
 		if(health<=0){gameObject.SetActive(false);Destroy(this);}
     	if (selected)
     	{
@@ -172,6 +175,7 @@ public class Friendly : Unit
 
             	target_pos = mousePosition;
             	isMoving = true; // Start moving
+
             	//Debug.Log("Moving to new target");
         	}
 			if (Input.GetMouseButtonDown(0)){Debug.Log("CRICK");}

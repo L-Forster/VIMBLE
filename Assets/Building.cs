@@ -18,6 +18,7 @@ public int health;
 
 public int maxHp;
 
+
 void TakeDamage(int damage){
     health =- damage;
 }
@@ -36,6 +37,7 @@ void Repair(int heal){
     // Update is called once per frame
     void Update()
     {
+        
         if(health <= 0){
             gameObject.SetActive(false);
             Destroy(this);
