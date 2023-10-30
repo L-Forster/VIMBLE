@@ -20,7 +20,7 @@ public class Generator : Building
    {
    float bX = building.transform.position.x;
    float bY = building.transform.position.y;
-    if(Math.Abs(bX - this.transform.position.x) <= radius && Math.Abs(bY- this.transform.position.y) <= radius){
+    if(Math.Abs(bX - this.transform.position.x) <= radius && Math.Abs(bY - this.transform.position.y) <= radius){
             if(building.powerRequired < genratedEnergy && !building.isPowered){
                 genratedEnergy =- building.powerRequired;
                 building.isPowered = true;
