@@ -26,7 +26,7 @@ public class Tree : MonoBehaviour
     {
         health_text.text = health.ToString() ;
 
-        if (! alive)
+        if (!alive)
         {
             Destroy(this);
             gameObject.SetActive(false);

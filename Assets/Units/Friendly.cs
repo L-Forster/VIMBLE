@@ -13,7 +13,7 @@ public class Friendly : Unit
 	public int tree_damage;
 	public int unit_damage;
 	public int metal_cost;
-	private bool isAttacking;
+	public bool isAttacking;
     public TextMesh health_text;
 	
 	public GameObject Marker;
@@ -65,12 +65,15 @@ public class Friendly : Unit
         			}
     			}
     			else if (target.CompareTag("Tree"))
-    		{
-        	Tree treeComponent = target.GetComponent<Tree>();
-        	if (treeComponent != null && treeComponent.alive)
-        	{
-            	DoDamage(treeComponent, tree_damage);
-        	}
+    			{
+      	  			Tree treeComponent = target.GetComponent<Tree>();
+					Debug.Log("ALMOST ATTACKING TREE");
+        			if (treeComponent != null && treeComponent.alive)
+        			{
+            			DoDamage(treeComponent, tree_damage);
+						Debug.Log("ATTACKING TREE");
+        			}
+			
     	}
 	}
 
@@ -117,17 +120,17 @@ public class Friendly : Unit
         {
             if (Input.GetMouseButtonDown(1))
             {
-                target_pos = mousePosition;
-				GameObject newSprite = Instantiate(Marker, target_pos, Quaternion.identity);
+                mousePos.z = -Camera.main.transform.position.z;
 
-// Assign the sprite to the SpriteRenderer
-				SpriteRenderer spriteRenderer = newSprite.GetComponent<SpriteRenderer>();
-				spriteRenderer.sprite = Sprite.Create(Resources.Load<Texture2D>("thumbnail_Selector.png"), new Rect(0, 0, 100,100),new Vector2(0.5f, 0.5f), 100f); // Replace "yourSprite" with the sprite you want to assign
+                // Instantiate the "Marker" prefab at the mouse position
+                GameObject newSprite = Instantiate(Marker, mousePosition, Quaternion.identity);
 
-// Set the position of the new GameObject
-				newSprite.transform.position = target_pos;
-				Move();
+                // Optionally, set the position of the new GameObject
+                newSprite.transform.position = mousePosition;
 
+                // Call the Move() function (assuming it's a function in your code)
+                Move();
+            
                 //Debug.Log("Moving");
             }
         }
@@ -165,7 +168,7 @@ public class Friendly : Unit
             }
             else
             {
-                Debug.LogError("Child GameObject 'Triangle' not found.");
+                Debug.LogError("Child GameObject 'Destroyer' not found.");
             }
         }
     }

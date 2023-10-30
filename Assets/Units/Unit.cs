@@ -91,6 +91,7 @@ namespace UnitNamespace
         {
             if (Time.time - lastDamageTime >= damage_cooldown)
             {
+                
                 target.health = (target.health - damage_val);
                 lastDamageTime = Time.time;
             }
