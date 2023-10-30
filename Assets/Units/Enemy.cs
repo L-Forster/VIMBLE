@@ -7,7 +7,8 @@ public class Enemy : Unit
 {
     public Vector2 target_pos;
     private Vector2 position;
-    
+    private bool isAttacking;
+
 
     private void Start()
     {
@@ -46,14 +47,14 @@ public class Enemy : Unit
 			    if (target.CompareTag("Bulding"))
 			    {
 				    Building buildingComponent = target.GetComponent<Building>();
-				    if (buildingComponent != null && buildingComponent.alive)
+				    if (buildingComponent != null && buildingComponent.health >= 0)
 				    {
 					    DoDamage(buildingComponent);
 				    }
 			    }
 			    else if (target.CompareTag("Friendly"))
 			    {
-				    friendly friendlyComponent = target.GetComponent<UnitNamespace.Unit>();
+				    UnitNamespace.Unit friendlyComponent = target.GetComponent<UnitNamespace.Unit>();
 				    if (friendlyComponent != null && friendlyComponent.alive)
 				    {
 					    DoDamage(friendlyComponent);
