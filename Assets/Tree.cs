@@ -1,30 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
+using UnityEngine.Tilemaps;
 public class Tree : MonoBehaviour
 {
-    // Start is called before the first frame update
     public int health;
-    public bool alive;
-    public TextMesh health_text;
+    public Tilemap Tilemap;
 
+    public List<TileBase> tiles;
+    // Start is called before the first frame update
     void Start()
-    
     {
-        health_text = GetComponentInChildren<TextMesh>(); // Assuming the Text component is a child of the unit's GameObject		isMoving = false;
-   
+        if (tiles.Contains(Tilemap.GetTile(Vector3Int.FloorToInt(this.transform.localPosition))))
+        {
+            Destroy(this);
+        }
+
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        health_text.text = health.ToString() ;
-
-        if (!alive)
+        if (health <= 0)
         {
-            gameObject.SetActive(false);
+
             Destroy(this);
         }
     }

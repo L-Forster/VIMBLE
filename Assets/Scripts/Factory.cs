@@ -1,20 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Factory : Building
 {
     int unit;
     string unitType;
-    public TextMesh health_text;
-
     // Start is called before the first frame update
     void Start()
     {
         health = maxHp;
-        health_text = GetComponentInChildren<TextMesh>(); // Assuming the Text component is a child of the unit's GameObject		isMoving = false;
-
     }
     void CreateUnit(int energy, int resources, string type)
     {
@@ -46,11 +41,6 @@ public class Factory : Building
     // Update is called once per frame
     void Update()
     {
-        health_text.text = health.ToString() ;
 
-        if(health <= 0){
-            gameObject.SetActive(false);
-            Destroy(this);
-        }
     }
 }

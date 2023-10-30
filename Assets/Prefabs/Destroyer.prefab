@@ -43,16 +43,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 168955844265024069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fd0a4449446997479dfe7eb35ac8275, type: 3}
+  m_Script: {fileID: 11500000, guid: b33282c94114e594987729860e75de8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  speed: 0
-  damage: 0
-  damage_cooldown: 0
-  alive: 0
+  health: 100
+  speed: 10
+  damage: 25
+  damage_cooldown: 2
+  alive: 1
   target: {fileID: 0}
-  isMoving: 0
+  selected: 0
+  mousePos: {x: 0, y: 0}
+  target_pos: {x: 0, y: 0}
+  tree_damage: 10
+  unit_damage: 25
+  metal_cost: 100
 --- !u!70 &6746585177129233730
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

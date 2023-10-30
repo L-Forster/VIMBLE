@@ -2,86 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnitNamespace;
-using System.Linq;
-using UnityEngine.UI;
 
 public class Enemy : Unit
 {
     public Vector2 target_pos;
     private Vector2 position;
     private bool isAttacking;
-    public TextMesh health_text;
 
 
     private void Start()
     {
-	    health_text = GetComponentInChildren<TextMesh>(); // Assuming the Text component is a child of the unit's GameObject		isMoving = false;
-
-
 	    isMoving = false;
         target_pos = transform.position; // Initialize target_pos to the current position
         position = transform.position; // Initialize position to the current position
     }
 
-    public int TargetClosest()
+    public void TargetClosest(Building[] buildings, Friendly[] friendlies)
     {
-	    Friendly[] unitsTemp = FindObjectsOfType<Friendly>();
-	    Building[] buildingsTemp = FindObjectsOfType<Building>();
-	    List<Friendly> units = unitsTemp.ToList();
-	    List<Building> buildings = buildingsTemp.ToList();
-	    //Debug.Log("BUILDINGS" + buildings);
-	    //Debug.Log("UNITS" + units);
-// Your list of objects
-// Reference position (for example, the position of the current object)
-	    Vector3 referencePosition = transform.position; // Use your actual reference position
-
-// Sort the list by absolute distance
-	    units = units.OrderBy(unt =>
-		    Vector3.Distance(unt.position, referencePosition)).ToList();
-	    buildings = buildings.OrderBy(bld =>
-		    Vector3.Distance(bld.transform.position, referencePosition)).ToList();
-	    if (units.Count == 0)
-	    {
-		    if (buildings.Count == 0)
-		    {
-			    //Debug.Log("NONE");
-
-			    return -1;
-		    }
-		    else
-		    {
-			   // Debug.Log("Going to building");
-
-			    target_pos = buildings[0].transform.position;
-		    }
-	    }
-	    else
-	    {
-		    if (buildings.Count == 0)
-		    {
-			   // Debug.Log("Going to Unit");
-
-			    target_pos = units[0].position;
-		    }
-
-		    else if (Vector3.Distance(units[0].position, referencePosition) <
-		             Vector3.Distance(buildings[0].transform.position, referencePosition))
-		    {
-			   // Debug.Log("Going to Unit");
-
-			    target_pos = units[0].position;
-		    }
-
-		    else
-		    {
-			    //Debug.Log("Going to building");
-
-			    target_pos = buildings[0].transform.position;
-		    }
-	    }
-
-	    isMoving = true;
-	    return 1;
+	    // calculate the distance between itself and the thing.
+	    // compares against previous
+		// finds the cloest building / friendly and attacks them
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -114,7 +54,7 @@ public class Enemy : Unit
 				    Building buildingComponent = target.GetComponent<Building>();
 				    if (buildingComponent != null && buildingComponent.health >= 0)
 				    {
-					    DoDamage(buildingComponent, damage);
+					    DoDamage(buildingComponent);
 				    }
 			    }
 			    else if (target.CompareTag("Friendly"))
@@ -122,7 +62,7 @@ public class Enemy : Unit
 				    UnitNamespace.Unit friendlyComponent = target.GetComponent<UnitNamespace.Unit>();
 				    if (friendlyComponent != null && friendlyComponent.alive)
 				    {
-					    DoDamage(friendlyComponent, damage);
+					    DoDamage(friendlyComponent);
 				    }
 			    }
 		    }
@@ -154,19 +94,12 @@ public class Enemy : Unit
 
         Vector2 newPosition = (Vector2)transform.position + tempPos * speed * Time.deltaTime;
         transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
-    }
-
+    } 
 	private void Update()
 	{
-		health_text.text = health.ToString() ;
-
+        // Move towards the target
         if(health<=0){gameObject.SetActive(false);Destroy(this);}
 
-        if (!isMoving)
-        {
-	        TargetClosest();
-
-        }
 		if (isMoving)
         {
          	Move();
@@ -177,12 +110,12 @@ public class Enemy : Unit
            	{
                // Stop moving when close enough to the target
                	isMoving = false;
-               //	Debug.Log("Reached the target");
+               	Debug.Log("Reached the target");
 	               //DoDamage();
             	}
        	}
-		if (target != null  && (!target.CompareTag("Friendly") && !target.CompareTag("Building"))){
-			if (isMoving || ((target.CompareTag("Friendly")||!target.CompareTag("Building")) && target.GetComponent<UnitNamespace.Unit>().isMoving))
+		if (target != null){
+			if (isMoving || (target.CompareTag("Friendly") && target.GetComponent<UnitNamespace.Unit>().isMoving))
 			{
 				isAttacking = false;
 				target = null;

@@ -2,11 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Building : MonoBehaviour
 {
+    public Image Image;
+    public int cost;
+    
+    public string buildingType;
 
-public string buildingType;
+public bool isPlaced;
 
 public bool isPowered;
 
@@ -17,7 +22,6 @@ public int buildTime;
 public int health;
 
 public int maxHp;
-
 
 void TakeDamage(int damage){
     health =- damage;
@@ -37,9 +41,7 @@ void Repair(int heal){
     // Update is called once per frame
     void Update()
     {
-        
         if(health <= 0){
-            gameObject.SetActive(false);
             Destroy(this);
         }
     }

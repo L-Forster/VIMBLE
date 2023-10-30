@@ -59,24 +59,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 3182002087613857680}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a19facb5fa88f4448ce4d27ee5a7413, type: 3}
+  m_Script: {fileID: 11500000, guid: b33282c94114e594987729860e75de8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  speed: 0
-  damage: 0
-  damage_cooldown: 0
-  alive: 0
+  health: 500
+  speed: 5
+  damage: 100
+  damage_cooldown: 5
+  alive: 1
   target: {fileID: 0}
-  isMoving: 0
   selected: 0
   mousePos: {x: 0, y: 0}
   target_pos: {x: 0, y: 0}
-  position: {x: 0, y: 0}
-  tree_damage: 0
-  unit_damage: 0
-  metal_cost: 0
-  health_text: {fileID: 0}
+  tree_damage: 100
+  unit_damage: 100
+  metal_cost: 1000
 --- !u!50 &-6936295070152364182
 Rigidbody2D:
   serializedVersion: 4

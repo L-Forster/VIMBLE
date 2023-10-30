@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using IUnitNamespace;
+
 namespace UnitNamespace
 {
 
@@ -16,11 +17,20 @@ namespace UnitNamespace
         public bool alive;
         public GameObject target;
         public bool isMoving;
-
+        
         int IUnit.health
+            {
+                get { return health; }
+                set { health = value; }
+            }
+        GameObject IUnit.target
         {
-            get { return health; }
-            set { health = value; }
+            get {
+                return target;
+            }
+            set {
+                target = value;
+            }
         }
 
         int IUnit.speed
@@ -57,9 +67,9 @@ namespace UnitNamespace
         public void DoDamage(GameObject target)
         {
         }
-        public void DoDamage(Unit target, int damage_val)
+        public void DoDamage(Unit target)
         {
-            if ((target.health - damage_val) <= 0)
+            if ((target.health - damage) <= 0)
             {
                 target.alive = false;
                 target.health = 0;
@@ -67,18 +77,18 @@ namespace UnitNamespace
 
             else
             {
-                target.health = (target.health - damage_val);
+                target.health = (target.health - damage);
             }
         }
 
-        public void DoDamage(Tree target, int damage_val)
+        public void DoDamage(Tree target)
         {
             if (Time.time - lastDamageTime >= damage_cooldown)
             {
-                target.health = (target.health - damage_val);
+                target.health = (target.health - damage);
                 lastDamageTime = Time.time;
 
-                if ((target.health - damage_val) <= 0)
+                if ((target.health - damage) <= 0)
                 {
                     target.alive = false;
                     target.health = 0;
@@ -86,16 +96,16 @@ namespace UnitNamespace
 
                 else
                 {
-                    target.health = (target.health - damage_val);
+                    target.health = (target.health - damage);
                 }
             }
         }
         
-        public void DoDamage(Building target, int damage_val)
+        public void DoDamage(Building target)
         {
             if (Time.time - lastDamageTime >= damage_cooldown)
             {
-                target.health = (target.health - damage_val);
+                target.health = (target.health - damage);
                 lastDamageTime = Time.time;
             }
         }
