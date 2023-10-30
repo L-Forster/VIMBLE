@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1188851722009551103}
   - component: {fileID: 5647916596397162252}
   - component: {fileID: -4779559921453699753}
-  - component: {fileID: 7908678823368182176}
+  - component: {fileID: -7905959504313421978}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7908678823368182176
+--- !u!114 &-7905959504313421978
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,5 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  alive: 0
   health_text: {fileID: 0}
+  alive: 0
+  tilemap: {fileID: 0}
+  tiles: []
