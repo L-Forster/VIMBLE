@@ -49,7 +49,7 @@ MonoBehaviour:
   health: 100
   speed: 10
   damage: 10
-  damage_cooldown: 0
+  damage_cooldown: 2
   alive: 1
   target: {fileID: 0}
   target_pos: {x: 0, y: 0}

@@ -13,8 +13,11 @@ public class Friendly : Unit
 	public int unit_damage;
 	public int metal_cost;
 	private bool isAttacking;
+
     private void Start()
     {
+		isMoving = false;
+		target = null;
         target_pos = transform.position; // Initialize target_pos to the current position
         position = transform.position; // Initialize position to the current position
         selected = false;
@@ -40,8 +43,9 @@ public class Friendly : Unit
     {
         isAttacking = true;
 
-        while (target != null && !isMoving)
+        while (target != null && !isMoving )
         {
+
             // Perform the attack here (you can call DoDamage or any other attack logic)
 			if (target != null)
 			{
@@ -150,7 +154,6 @@ public class Friendly : Unit
         }
     }
 
-private bool isMoving = false;
 
 	private void Update()
 	{
@@ -185,9 +188,15 @@ private bool isMoving = false;
                 	Debug.Log("Reached the target");
             	}
         	}
+
     	}
-	
-}
+		if (target != null){
+			if (isMoving  || (target.CompareTag("Enemy")&&target.GetComponent<UnitNamespace.Unit>().isMoving)){
+					isAttacking = false;
+					target = null;
+		}
+		}
+	}
 
 }
 

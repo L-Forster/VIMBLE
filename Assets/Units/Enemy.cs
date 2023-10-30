@@ -12,6 +12,7 @@ public class Enemy : Unit
 
     private void Start()
     {
+	    isMoving = false;
         target_pos = transform.position; // Initialize target_pos to the current position
         position = transform.position; // Initialize position to the current position
     }
@@ -25,26 +26,30 @@ public class Enemy : Unit
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-	    // Check if the collision involves a GameObject you're interested in
-	    if (collision.gameObject.CompareTag("Friendly"))
-	    {
+	    isMoving = false;
+	    // Check if the collision involves a GameObject you're interested i
 		    // Handle the collision with the "Enemy" GameObject
-		    DoDamage(collision.gameObject.GetComponent<UnitNamespace.Unit>());
-		    Debug.Log("Collided with a Friendly!");
-		    isMoving = false;
+	    target = collision.gameObject;
+
+		    
+	    if (!isAttacking)
+	    {
+		    StartCoroutine(AttackCoroutine());
 	    }
+	    
     }
 
     private IEnumerator AttackCoroutine()
     {
 	    isAttacking = true;
 
-	    while (target != null && !isMoving)
+	    while (target != null && !isMoving )
 	    {
+
 		    // Perform the attack here (you can call DoDamage or any other attack logic)
 		    if (target != null)
 		    {
-			    if (target.CompareTag("Bulding"))
+			    if (target.CompareTag("Building"))
 			    {
 				    Building buildingComponent = target.GetComponent<Building>();
 				    if (buildingComponent != null && buildingComponent.health >= 0)
@@ -90,8 +95,6 @@ public class Enemy : Unit
         Vector2 newPosition = (Vector2)transform.position + tempPos * speed * Time.deltaTime;
         transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
     } 
-    private bool isMoving = false;
-
 	private void Update()
 	{
         // Move towards the target
@@ -111,6 +114,13 @@ public class Enemy : Unit
 	               //DoDamage();
             	}
        	}
+		if (target != null){
+			if (isMoving || (target.CompareTag("Friendly") && target.GetComponent<UnitNamespace.Unit>().isMoving))
+			{
+				isAttacking = false;
+				target = null;
+			}
+		}
    	}
 	
 }

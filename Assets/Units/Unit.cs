@@ -16,6 +16,7 @@ namespace UnitNamespace
         // Start is called before the first frame update
         public bool alive;
         public GameObject target;
+        public bool isMoving;
         
         int IUnit.health
             {
