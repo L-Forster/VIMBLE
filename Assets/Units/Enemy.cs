@@ -34,6 +34,42 @@ public class Enemy : Unit
 	    }
     }
 
+    private IEnumerator AttackCoroutine()
+    {
+	    isAttacking = true;
+
+	    while (target != null && !isMoving)
+	    {
+		    // Perform the attack here (you can call DoDamage or any other attack logic)
+		    if (target != null)
+		    {
+			    if (target.CompareTag("Bulding"))
+			    {
+				    Building buildingComponent = target.GetComponent<Building>();
+				    if (buildingComponent != null && buildingComponent.alive)
+				    {
+					    DoDamage(buildingComponent);
+				    }
+			    }
+			    else if (target.CompareTag("Friendly"))
+			    {
+				    friendly friendlyComponent = target.GetComponent<UnitNamespace.Unit>();
+				    if (friendlyComponent != null && friendlyComponent.alive)
+				    {
+					    DoDamage(friendlyComponent);
+				    }
+			    }
+		    }
+
+		    // Wait for the cooldown period before the next attack
+		
+		    yield return new WaitForSeconds(damage_cooldown);
+	    }
+
+	    // Reset the attack state after the target is defeated
+	    isAttacking = false;
+    }
+
     public void Move()
     {
         if (float.IsNaN(target_pos.x) || float.IsNaN(target_pos.y) || float.IsInfinity(target_pos.x) || float.IsInfinity(target_pos.y))
