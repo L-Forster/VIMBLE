@@ -9,7 +9,7 @@ public class Tree : MonoBehaviour
     // Start is called before the first frame update
     public int health;
     public TextMesh health_text;
-
+    public bool alive;
     public Tilemap tilemap;
     public List<TileBase> tiles;
     void Start()
@@ -26,7 +26,7 @@ public class Tree : MonoBehaviour
     {
         health_text.text = health.ToString() ;
 
-        if (health <= 0)
+        if (! alive)
         {
             Destroy(this);
             gameObject.SetActive(false);
