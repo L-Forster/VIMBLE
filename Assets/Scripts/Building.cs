@@ -6,26 +6,26 @@ using UnityEngine;
 public class Building : MonoBehaviour
 {
 
-public string buildingType;
+    public string buildingType;
 
-public bool isPowered;
+    public bool isPowered;
 
-public int powerRequired;
+    public int powerRequired;
 
-public int buildTime;
+    public int buildTime;
 
-public int health;
+    public int health;
 
-public int maxHp;
+    public int maxHp;
 
-void TakeDamage(int damage){
-    health =- damage;
-}
+    void TakeDamage(int damage){
+        health =- damage;
+    }
 
-void Repair(int heal){
-   health =+ heal;
-   if(health > maxHp) health = maxHp;
-}
+    void Repair(int heal){
+        health =+ heal;
+        if(health > maxHp) health = maxHp;
+    }
 
     // Start is called before the first frame update
     void Start()
