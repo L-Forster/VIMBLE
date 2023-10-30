@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8744006019099965817
+--- !u!1 &779290261058481506
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1017800814336068437}
-  - component: {fileID: -3267497205188235699}
+  - component: {fileID: 8701961646799635532}
+  - component: {fileID: 5191716557029666349}
   m_Layer: 0
-  m_Name: Factory
+  m_Name: Mine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1017800814336068437
+--- !u!4 &8701961646799635532
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8744006019099965817}
+  m_GameObject: {fileID: 779290261058481506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -779.4885, y: 89.52478, z: -4.5964775}
+  m_LocalPosition: {x: 36.257633, y: 84.58108, z: 3.5311859}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3267497205188235699
+--- !u!114 &5191716557029666349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8744006019099965817}
+  m_GameObject: {fileID: 779290261058481506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40116229e4139fb9cac64e9630178c7e, type: 3}
+  m_Script: {fileID: 11500000, guid: fb2f1a7ec7ff85c42baf2f2bd0f1399d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: d76d9ef48a2cfe3418ee46bfbc820d74, type: 3}
+  sprite: {fileID: 21300000, guid: cc62a31e2a900ce429dc5ea9b36c68db, type: 3}
   cost: 10
-  buildingType: Factory
+  buildingType: Mine
   isPlaced: 0
   isPowered: 0
   powerRequired: 10

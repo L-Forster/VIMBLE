@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba772fce227378afb8b513ee08ae70a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 55d8aeba6ea7b45478853e6cae244951, type: 3}
+  cost: 10
   buildingType: Battery
+  isPlaced: 0
   isPowered: 0
   powerRequired: 0
   buildTime: 15
