@@ -50,4 +50,5 @@ MonoBehaviour:
   buildTime: 0
   health: 100
   maxHp: 100
+  metal_cost: 200
   health_text: {fileID: 0}

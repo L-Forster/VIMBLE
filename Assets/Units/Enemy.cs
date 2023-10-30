@@ -84,20 +84,27 @@ public class Enemy : Unit
 	    return 1;
     }
 
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-	    isMoving = false;
-	    // Check if the collision involves a GameObject you're interested i
-		    // Handle the collision with the "Enemy" GameObject
-	    target = collision.gameObject;
+		Debug.Log("Collided!");
+		isMoving = false;
+       // Debug.Log("Collided!!!");
+            // Set the target to the collided object
+        target = collision.gameObject;
+        
+            // Start attacking if not already attacking
+        if (!isAttacking)
+        {
+			Debug.Log("Start attack ");
+         	StartCoroutine(AttackCoroutine());
+         }
+        // Check if the collision involves a GameObject you're interested in
 
-		    
-	    if (!isAttacking)
-	    {
-		    StartCoroutine(AttackCoroutine());
-	    }
-	    
     }
+
+
+
 
     private IEnumerator AttackCoroutine()
     {
@@ -112,7 +119,7 @@ public class Enemy : Unit
 			    if (target.CompareTag("Building"))
 			    {
 				    Building buildingComponent = target.GetComponent<Building>();
-				    if (buildingComponent != null && buildingComponent.health >= 0)
+				    if (buildingComponent != null && buildingComponent.health > 0)
 				    {
 					    DoDamage(buildingComponent, damage);
 				    }

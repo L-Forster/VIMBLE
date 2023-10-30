@@ -49,11 +49,12 @@ MonoBehaviour:
   buildingType: 
   isPowered: 0
   powerRequired: 0
-  buildTime: 0
-  health: 0
-  maxHp: 0
+  buildTime: 5
+  health: 200
+  maxHp: 200
+  metal_cost: 100
   energy: 0
-  maxEnergy: 0
+  maxEnergy: 5000
   health_text: {fileID: 0}
 --- !u!23 &-2876836426359164878
 MeshRenderer:

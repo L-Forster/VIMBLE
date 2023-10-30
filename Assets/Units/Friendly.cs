@@ -45,46 +45,46 @@ public class Friendly : Unit
 
     }
 
+
     private IEnumerator AttackCoroutine()
     {
-        isAttacking = true;
-		Debug.Log(isMoving);
-		Debug.Log("Target " + target);
-        while (target != null && !isMoving )
-        {
+	    isAttacking = true;
 
-			if (target != null)
-			{
-    			if (target.CompareTag("Enemy"))
-    			{
-        			UnitNamespace.Unit unitComponent = target.GetComponent<UnitNamespace.Unit>();
-        			if (unitComponent != null && unitComponent.alive)
-        			{
-            			DoDamage(unitComponent, unit_damage);
-						Debug.Log("dAMagingDJADOPAIODAJ!!!fkafja");
-        			}
-    			}
-    			else if (target.CompareTag("Tree"))
-    			{
-      	  			Tree treeComponent = target.GetComponent<Tree>();
-					Debug.Log("ALMOST ATTACKING TREE");
-        			if (treeComponent != null && treeComponent.alive)
-        			{
-            			DoDamage(treeComponent, tree_damage);
-						Debug.Log("ATTACKING TREE");
-        			}
-			
-    	}
-	}
+	    while (target != null && !isMoving )
+	    {
 
-            // Wait for the cooldown period before the next attack
+		    // Perform the attack here (you can call DoDamage or any other attack logic)
+		    if (target != null)
+		    {
+			    if (target.CompareTag("Tree"))
+			    {
+				    Tree treeComponent = target.GetComponent<Tree>();
+				    if (treeComponent != null && treeComponent.health > 0)
+				    {
+					    DoDamage(treeComponent, damage);
+				    }
+			    }
+			    else if (target.CompareTag("Enemy"))
+			    {
+				    UnitNamespace.Unit enemyComponent = target.GetComponent<UnitNamespace.Unit>();
+				    if (enemyComponent != null && enemyComponent.alive)
+				    {
+					    DoDamage(enemyComponent, damage);
+				    }
+			    }
+		    }
+
+		    // Wait for the cooldown period before the next attack
 		
-            yield return new WaitForSeconds(damage_cooldown);
-        }
+		    yield return new WaitForSeconds(damage_cooldown);
+	    }
 
-        // Reset the attack state after the target is defeated
-        isAttacking = false;
-	}
+	    // Reset the attack state after the target is defeated
+	    isAttacking = false;
+    }
+
+	
+
 
     public void Move()
     {

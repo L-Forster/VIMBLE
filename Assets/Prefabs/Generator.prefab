@@ -49,9 +49,10 @@ MonoBehaviour:
   buildingType: 
   isPowered: 0
   powerRequired: 0
-  buildTime: 0
-  health: 0
-  maxHp: 0
+  buildTime: 10
+  health: 300
+  maxHp: 300
+  metal_cost: 300
   genratedEnergy: 0
   radius: 20
   health_text: {fileID: 0}

@@ -18,6 +18,7 @@ public int health;
 
 public int maxHp;
 
+public int metal_cost;
 
 void TakeDamage(int damage){
     health =- damage;
