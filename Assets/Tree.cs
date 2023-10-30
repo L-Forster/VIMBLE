@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using UnityEngine.Tilemaps;
 public class Tree : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class Tree : MonoBehaviour
     {
         if (health <= 0)
         {
+
             Destroy(this);
         }
     }
