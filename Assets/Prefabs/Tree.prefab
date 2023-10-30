@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1188851722009551103}
   - component: {fileID: 5647916596397162252}
-  - component: {fileID: 2083304522211054422}
   - component: {fileID: -4779559921453699753}
+  - component: {fileID: -7905959504313421978}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -86,24 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2083304522211054422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7066443534188607415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bedb9976639a5354f8d1fd0e186a9bee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingType: 
-  isPowered: 0
-  powerRequired: 0
-  buildTime: 0
-  health: 0
-  maxHp: 0
 --- !u!61 &-4779559921453699753
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -130,3 +112,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-7905959504313421978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7066443534188607415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774d806f42ffad54f97f46fda66d7a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  health_text: {fileID: 0}
+  alive: 0
+  tilemap: {fileID: 0}
+  tiles: []
