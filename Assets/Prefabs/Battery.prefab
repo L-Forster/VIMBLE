@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: -4973793058954695781}
   m_Layer: 0
   m_Name: Battery
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,12 +130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba772fce227378afb8b513ee08ae70a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingType: 
+  buildingType: Battery
   isPowered: 0
   powerRequired: 0
   buildTime: 0
   health: 0
-  maxHp: 0
+  maxHp: 1500
   energy: 0
   maxEnergy: 0
 --- !u!61 &-4973793058954695781
