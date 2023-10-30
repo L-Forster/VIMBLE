@@ -37,6 +37,7 @@ void Repair(int heal){
     void Update()
     {
         if(health <= 0){
+            gameObject.SetActive(false);
             Destroy(this);
         }
     }

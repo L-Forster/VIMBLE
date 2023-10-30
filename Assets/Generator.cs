@@ -37,7 +37,10 @@ public class Generator : Building
 
     // Update is called once per frame
     void Update()
-    {
-        
+    { 
+        if(health <= 0){
+            gameObject.SetActive(false);
+            Destroy(this);
+        }
     }
 }

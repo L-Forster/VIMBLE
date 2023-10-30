@@ -8,7 +8,7 @@ public class Friendly : Unit
     public bool selected;
     public Vector2 mousePos;
     public Vector2 target_pos;
-    private Vector2 position;
+    public Vector2 position;
 	public int tree_damage;
 	public int unit_damage;
 	public int metal_cost;
@@ -25,16 +25,18 @@ public class Friendly : Unit
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+		Debug.Log("Collided!");
 		isMoving = false;
-        Debug.Log("Collided!!!");
+       // Debug.Log("Collided!!!");
             // Set the target to the collided object
-            target = collision.gameObject;
+        target = collision.gameObject;
 
             // Start attacking if not already attacking
-            if (!isAttacking)
-            {
-                StartCoroutine(AttackCoroutine());
-            }
+        if (!isAttacking)
+        {
+			Debug.Log("Start attack ");
+         	StartCoroutine(AttackCoroutine());
+         }
         // Check if the collision involves a GameObject you're interested in
 
     }
@@ -42,11 +44,11 @@ public class Friendly : Unit
     private IEnumerator AttackCoroutine()
     {
         isAttacking = true;
-
+		Debug.Log(isMoving);
+		Debug.Log("Target " + target);
         while (target != null && !isMoving )
         {
 
-            // Perform the attack here (you can call DoDamage or any other attack logic)
 			if (target != null)
 			{
     			if (target.CompareTag("Enemy"))
@@ -54,7 +56,8 @@ public class Friendly : Unit
         			UnitNamespace.Unit unitComponent = target.GetComponent<UnitNamespace.Unit>();
         			if (unitComponent != null && unitComponent.alive)
         			{
-            			DoDamage(unitComponent);
+            			DoDamage(unitComponent, unit_damage);
+						Debug.Log("dAMagingDJADOPAIODAJ!!!fkafja");
         			}
     			}
     			else if (target.CompareTag("Tree"))
@@ -62,7 +65,7 @@ public class Friendly : Unit
         	Tree treeComponent = target.GetComponent<Tree>();
         	if (treeComponent != null && treeComponent.alive)
         	{
-            	DoDamage(treeComponent);
+            	DoDamage(treeComponent, tree_damage);
         	}
     	}
 	}
@@ -80,7 +83,7 @@ public class Friendly : Unit
     {
         if (float.IsNaN(target_pos.x) || float.IsNaN(target_pos.y) || float.IsInfinity(target_pos.x) || float.IsInfinity(target_pos.y))
         {
-            Debug.LogError("Invalid target_pos: " + target_pos);
+          //  Debug.LogError("Invalid target_pos: " + target_pos);
             return;
         }
 
@@ -112,7 +115,7 @@ public class Friendly : Unit
             {
                 target_pos = mousePosition;
                 Move();
-                Debug.Log("Moving");
+                //Debug.Log("Moving");
             }
         }
 
@@ -169,7 +172,7 @@ public class Friendly : Unit
 
             	target_pos = mousePosition;
             	isMoving = true; // Start moving
-            	Debug.Log("Moving to new target");
+            	//Debug.Log("Moving to new target");
         	}
 			if (Input.GetMouseButtonDown(0)){Debug.Log("CRICK");}
 
@@ -185,16 +188,17 @@ public class Friendly : Unit
             	{
                 // Stop moving when close enough to the target
                 	isMoving = false;
-                	Debug.Log("Reached the target");
+                	//Debug.Log("Reached the target");
             	}
         	}
 
     	}
-		if (target != null){
+		if (target != null && !target.CompareTag("Enemy")){
+			Debug.Log(target);
 			if (isMoving  || (target.CompareTag("Enemy")&&target.GetComponent<UnitNamespace.Unit>().isMoving)){
 					isAttacking = false;
 					target = null;
-		}
+			}
 		}
 	}
 

@@ -38,6 +38,9 @@ public class Battery : Building
     }
     void Update()
     {
-
+        if(health <= 0){
+            gameObject.SetActive(false);
+            Destroy(this);
+        }
     }
 }

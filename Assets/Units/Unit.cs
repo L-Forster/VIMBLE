@@ -67,9 +67,9 @@ namespace UnitNamespace
         public void DoDamage(GameObject target)
         {
         }
-        public void DoDamage(Unit target)
+        public void DoDamage(Unit target, int damage_val)
         {
-            if ((target.health - damage) <= 0)
+            if ((target.health - damage_val) <= 0)
             {
                 target.alive = false;
                 target.health = 0;
@@ -77,18 +77,18 @@ namespace UnitNamespace
 
             else
             {
-                target.health = (target.health - damage);
+                target.health = (target.health - damage_val);
             }
         }
 
-        public void DoDamage(Tree target)
+        public void DoDamage(Tree target, int damage_val)
         {
             if (Time.time - lastDamageTime >= damage_cooldown)
             {
-                target.health = (target.health - damage);
+                target.health = (target.health - damage_val);
                 lastDamageTime = Time.time;
 
-                if ((target.health - damage) <= 0)
+                if ((target.health - damage_val) <= 0)
                 {
                     target.alive = false;
                     target.health = 0;
@@ -96,16 +96,16 @@ namespace UnitNamespace
 
                 else
                 {
-                    target.health = (target.health - damage);
+                    target.health = (target.health - damage_val);
                 }
             }
         }
         
-        public void DoDamage(Building target)
+        public void DoDamage(Building target, int damage_val)
         {
             if (Time.time - lastDamageTime >= damage_cooldown)
             {
-                target.health = (target.health - damage);
+                target.health = (target.health - damage_val);
                 lastDamageTime = Time.time;
             }
         }

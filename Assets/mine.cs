@@ -30,6 +30,10 @@ public class Mine : Building
     // Update is called once per frame
     void Update()
     {
+        if(health <= 0){
+            gameObject.SetActive(false);
+            Destroy(this);
+        }
     //    int energyFromBattery = Building.Battery.energy;
      //   MineMetal(ref energyFromBattery);
 
